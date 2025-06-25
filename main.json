@@ -1,5 +1,5 @@
 {
-    "name": "宏基因组功能分析",
+    "name": "宏基因组功能分析 ",
     "analysisPipline": "metagenomics_humann_analysis",
     "parseAnalysisModule": "metagenomics_humann_analysis",
     "description": "宏基因组功能分析",
@@ -493,6 +493,7 @@
             "name": "功能分析",
             "analysisPipline": "pipeline_humann",
             "parseAnalysisModule": "pipeline_humann",
+            "markdown":"pipeline_humann_md",
             "parseAnalysisResultModule": [
                 {
                     "module": "humann_profile",
@@ -542,6 +543,15 @@
                         "humann_profile"
                     ],
                     "mode": "multiple"
+                }
+            ],"downstreamAnalysis":[
+                {
+                    "name": "查看genefamilies",
+                    "analysisType": "one",
+                    "moduleName": "tsv",
+                    "markdown":"humann_genefamilies",
+                    "origin":true,
+                    "paramsFun": "record => ({file_path:record.content.genefamilies,comment:''})"
                 }
             ]
         }
